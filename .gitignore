@@ -1,0 +1,4 @@
+venv/
+scenario.txt
+storage/log.txt
+storage/text.txt
