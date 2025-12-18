@@ -1,3 +1,4 @@
+.gitignore
 venv/
 scenario.txt
 storage/log.txt
