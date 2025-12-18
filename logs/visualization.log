@@ -1,0 +1,60 @@
+2025-12-18 08:26:14,404 - INFO - Visualization Service запущен, WEBMASTER_URL=http://webmaster-service:8003
+2025-12-18 08:28:55,055 - INFO - Visualization Service запущен, WEBMASTER_URL=http://webmaster-service:8003
+2025-12-18 08:32:18,313 - INFO - Visualization Service запущен, WEBMASTER_URL=http://webmaster-service:8003
+2025-12-18 08:32:18,318 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8050
+ * Running on http://172.18.0.6:8050
+2025-12-18 08:32:18,318 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-18 08:33:06,607 - INFO - POST /api/scenario4 - {'region': 'Пензенская область', 'district': 'Бековский район', 'year': 2020, 'history': 5}
+2025-12-18 08:33:06,608 - INFO - Запрос к WebMaster: http://webmaster-service:8003/scenario4, params={'region': 'Пензенская область', 'district': 'Бековский район', 'year': 2020, 'history': 5}
+2025-12-18 08:33:07,411 - INFO - Ответ получен: status=OK
+2025-12-18 08:33:07,412 - INFO - 172.18.0.1 - - [18/Dec/2025 08:33:07] "POST /api/scenario4 HTTP/1.1" 200 -
+2025-12-18 08:42:56,294 - INFO - Visualization Service запущен, WEBMASTER_URL=http://webmaster-service:8003
+2025-12-18 08:42:56,299 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8050
+ * Running on http://172.18.0.6:8050
+2025-12-18 08:42:56,299 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-18 08:43:02,505 - INFO - GET /scenario4
+2025-12-18 08:43:02,533 - INFO - 172.18.0.1 - - [18/Dec/2025 08:43:02] "GET /scenario4 HTTP/1.1" 200 -
+2025-12-18 08:43:02,565 - INFO - 172.18.0.1 - - [18/Dec/2025 08:43:02] "[36mGET /static/js/districts.js HTTP/1.1[0m" 304 -
+2025-12-18 08:43:02,604 - INFO - 172.18.0.1 - - [18/Dec/2025 08:43:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-12-18 08:43:09,306 - INFO - POST /api/scenario4 - {'region': 'Пензенская область', 'district': 'Бековский район', 'year': 2020, 'history': 5}
+2025-12-18 08:43:09,306 - INFO - Запрос к WebMaster: http://webmaster-service:8003/scenario4, params={'region': 'Пензенская область', 'district': 'Бековский район', 'year': 2020, 'history': 5}
+2025-12-18 08:43:10,102 - INFO - Ответ получен: status=OK
+2025-12-18 08:43:10,103 - INFO - 172.18.0.1 - - [18/Dec/2025 08:43:10] "POST /api/scenario4 HTTP/1.1" 200 -
+2025-12-18 08:45:00,249 - INFO - GET /scenario3
+2025-12-18 08:45:00,255 - INFO - 172.18.0.1 - - [18/Dec/2025 08:45:00] "GET /scenario3 HTTP/1.1" 200 -
+2025-12-18 08:45:00,299 - INFO - 172.18.0.1 - - [18/Dec/2025 08:45:00] "[36mGET /static/js/districts.js HTTP/1.1[0m" 304 -
+2025-12-18 08:45:07,170 - INFO - POST /api/scenario3 - {'region': 'Пензенская область', 'district': 'Бековский район', 'year': 2020}
+2025-12-18 08:45:07,170 - INFO - Запрос к WebMaster: http://webmaster-service:8003/scenario3, params={'region': 'Пензенская область', 'district': 'Бековский район', 'year': 2020}
+2025-12-18 08:45:08,103 - INFO - Ответ получен: status=OK
+2025-12-18 08:45:08,104 - INFO - 172.18.0.1 - - [18/Dec/2025 08:45:08] "POST /api/scenario3 HTTP/1.1" 200 -
+2025-12-18 08:48:50,611 - INFO - Visualization Service запущен, WEBMASTER_URL=http://webmaster-service:8003
+2025-12-18 08:48:50,615 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8050
+ * Running on http://172.18.0.6:8050
+2025-12-18 08:48:50,615 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-18 08:49:02,454 - INFO - GET /scenario3
+2025-12-18 08:49:02,477 - INFO - 172.18.0.1 - - [18/Dec/2025 08:49:02] "GET /scenario3 HTTP/1.1" 200 -
+2025-12-18 08:49:02,504 - INFO - 172.18.0.1 - - [18/Dec/2025 08:49:02] "[36mGET /static/js/districts.js HTTP/1.1[0m" 304 -
+2025-12-18 08:49:08,683 - INFO - POST /api/scenario3 - {'region': 'Пензенская область', 'district': 'Белинский район', 'year': 2020}
+2025-12-18 08:49:08,683 - INFO - Запрос к WebMaster: http://webmaster-service:8003/scenario3, params={'region': 'Пензенская область', 'district': 'Белинский район', 'year': 2020}
+2025-12-18 08:49:09,463 - INFO - Ответ получен: status=OK
+2025-12-18 08:49:09,464 - INFO - 172.18.0.1 - - [18/Dec/2025 08:49:09] "POST /api/scenario3 HTTP/1.1" 200 -
+2025-12-18 08:49:31,313 - INFO - GET /scenario4
+2025-12-18 08:49:31,319 - INFO - 172.18.0.1 - - [18/Dec/2025 08:49:31] "GET /scenario4 HTTP/1.1" 200 -
+2025-12-18 08:49:31,343 - INFO - 172.18.0.1 - - [18/Dec/2025 08:49:31] "[36mGET /static/js/districts.js HTTP/1.1[0m" 304 -
+2025-12-18 08:49:37,777 - INFO - POST /api/scenario4 - {'region': 'Пензенская область', 'district': 'Каменский район', 'year': 2020, 'history': 5}
+2025-12-18 08:49:37,777 - INFO - Запрос к WebMaster: http://webmaster-service:8003/scenario4, params={'region': 'Пензенская область', 'district': 'Каменский район', 'year': 2020, 'history': 5}
+2025-12-18 08:49:38,515 - INFO - Ответ получен: status=OK
+2025-12-18 08:49:38,516 - INFO - 172.18.0.1 - - [18/Dec/2025 08:49:38] "POST /api/scenario4 HTTP/1.1" 200 -
+2025-12-18 08:49:58,067 - INFO - GET /scenario3
+2025-12-18 08:49:58,067 - INFO - 172.18.0.1 - - [18/Dec/2025 08:49:58] "GET /scenario3 HTTP/1.1" 200 -
+2025-12-18 08:49:58,109 - INFO - 172.18.0.1 - - [18/Dec/2025 08:49:58] "[36mGET /static/js/districts.js HTTP/1.1[0m" 304 -
+2025-12-18 08:50:03,649 - INFO - POST /api/scenario3 - {'region': 'Пензенская область', 'district': 'Бессоновский район', 'year': 2020}
+2025-12-18 08:50:03,650 - INFO - Запрос к WebMaster: http://webmaster-service:8003/scenario3, params={'region': 'Пензенская область', 'district': 'Бессоновский район', 'year': 2020}
+2025-12-18 08:50:04,423 - INFO - Ответ получен: status=OK
+2025-12-18 08:50:04,424 - INFO - 172.18.0.1 - - [18/Dec/2025 08:50:04] "POST /api/scenario3 HTTP/1.1" 200 -

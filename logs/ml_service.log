@@ -1,0 +1,22 @@
+2025-12-18 08:21:59,372 - INFO - Модель загружена: models/Winter_wheat.pt
+2025-12-18 08:26:15,736 - INFO - Модель загружена: models/Winter_wheat.pt
+2025-12-18 08:28:56,513 - INFO - Модель загружена: models/Winter_wheat.pt
+2025-12-18 08:31:05,475 - INFO - Модель загружена: models/Winter_wheat.pt
+2025-12-18 08:32:19,671 - INFO - Модель загружена: models/Winter_wheat.pt
+2025-12-18 08:33:07,405 - INFO - POST /regression - Пензенская область, Бековский район, 2020
+2025-12-18 08:33:07,408 - INFO - OK - pred: 33.81, actual: 49.40, error: 31.56%
+2025-12-18 08:42:57,809 - INFO - Модель загружена: models/Winter_wheat.pt
+2025-12-18 08:43:10,098 - INFO - POST /regression - Пензенская область, Бековский район, 2020
+2025-12-18 08:43:10,100 - INFO - OK - pred: 33.81, actual: 49.40, error: 31.56%
+2025-12-18 08:45:08,025 - INFO - POST /predict - Пензенская область, Бековский район, 2020
+2025-12-18 08:45:08,025 - INFO - data type: <class 'list'>, data length: 5880
+2025-12-18 08:45:08,099 - INFO - OK - pred: 42.61, actual: 49.40, error: 13.74%
+2025-12-18 08:48:51,951 - INFO - Модель загружена: models/Winter_wheat.pt
+2025-12-18 08:49:09,402 - INFO - POST /predict - Пензенская область, Белинский район, 2020
+2025-12-18 08:49:09,402 - INFO - data type: <class 'list'>, data length: 5880
+2025-12-18 08:49:09,460 - INFO - OK - pred: 43.46, actual: 48.30, error: 10.01%
+2025-12-18 08:49:38,512 - INFO - POST /regression - Пензенская область, Каменский район, 2020
+2025-12-18 08:49:38,513 - INFO - OK - pred: 32.17, actual: 50.80, error: 36.68%
+2025-12-18 08:50:04,404 - INFO - POST /predict - Пензенская область, Бессоновский район, 2020
+2025-12-18 08:50:04,404 - INFO - data type: <class 'list'>, data length: 5880
+2025-12-18 08:50:04,418 - INFO - OK - pred: 35.52, actual: 38.80, error: 8.45%

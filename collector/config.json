@@ -1,0 +1,33 @@
+{
+    "LIST_OF_PARAMS": {
+        "ndvi" : 1, 
+        "ndvi_historical" : 1,
+        "mean_temp" : 40,
+        "mean_temp_historical" : 40,
+        "mean_temp_acc" : 5000,
+        "mean_temp_acc_historical" : 5000,
+        "mean_prec" : 10,
+        "mean_prec_historical" : 10, 
+        "mean_prec_acc" : 1000,
+        "mean_prec_acc_historical" : 1000,
+        "mean_rh" : 100,
+        "mean_rh_historical" : 100,
+        "mean_p" : 1000,
+        "mean_snod" : 1,
+        "mean_snod_historical" : 1,
+        "mean_snowc" : 100,
+        "mean_snowc_historical" : 100,
+        "mean_sdswr" : 400,
+        "mean_sdlwr" : 400,
+        "mean_tmpgr10" : 50,
+        "mean_soilw10" : 50
+    },
+    "LIST_OF_STAT_PARAMS" : {
+        "mean_prod" : 80,
+        "trend" : 20,
+        "disp" : 6
+    },
+    "LEN_OF_PARAM" : 365,
+    "CUT_START" : 275,
+    "CUT_END" : 520
+}

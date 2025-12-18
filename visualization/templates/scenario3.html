@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+
+{% block title %}Прогноз нейросетью - Прогноз урожайности{% endblock %}
+
+{% block content %}
+<div class="hero-section text-center" style="padding: 40px 0;">
+    <div class="container">
+        <h1 class="h2 fw-bold mb-2">
+            <i class="fas fa-brain me-2"></i>
+            Сценарий 3: Прогноз нейросетью
+        </h1>
+        <p class="mb-0">Прогнозирование урожайности с помощью CNN модели</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-filter me-2"></i>
+                    Параметры запроса
+                </div>
+                <div class="card-body">
+                    <form id="scenario3-form">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Регион</label>
+                            <select class="form-select" id="region" required>
+                                <option value="">Выберите регион</option>
+                                <option value="Пензенская область">Пензенская область</option>
+                                <option value="Тамбовская область">Тамбовская область</option>
+                                <option value="Тульская область">Тульская область</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Район</label>
+                            <select class="form-select" id="district" required disabled>
+                                <option value="">Сначала выберите регион</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Год прогноза</label>
+                            <select class="form-select" id="year" required>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020" selected>2020</option>
+                                <option value="2019">2019</option>
+                                <option value="2018">2018</option>
+                                <option value="2017">2017</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-brain me-2"></i>
+                            Получить прогноз
+                        </button>
+                    </form>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="small text-muted">
+                        <i class="fas fa-info-circle me-1"></i>
+                        <strong>О модели:</strong><br>
+                        Используется сверточная нейронная сеть (CNN), обученная на 
+                        временных рядах NDVI и метеопараметров за 2 года.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar me-2"></i>
+                    Результат прогноза
+                </div>
+                <div class="card-body">
+                    <div id="result-container">
+                        <div class="text-center text-muted py-5">
+                            <i class="fas fa-brain fa-3x mb-3"></i>
+                            <p>Выберите параметры и нажмите "Получить прогноз"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/districts.js') }}"></script>
+<script>
+updateDistricts('region', 'district');
+
+document.getElementById('scenario3-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const resultContainer = document.getElementById('result-container');
+    showLoading('result-container');
+    
+    const data = {
+        region: document.getElementById('region').value,
+        district: document.getElementById('district').value,
+        year: parseInt(document.getElementById('year').value)
+    };
+    
+    try {
+        const response = await fetch('/api/scenario3', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+        
+        const result = await response.json();
+        
+        if (result.status === 'OK') {
+            const errorPercent = result.error_percent;
+            let qualityClass = 'bg-success';
+            let qualityText = 'Отличный прогноз';
+            
+            if (errorPercent > 20) {
+                qualityClass = 'bg-danger';
+                qualityText = 'Низкая точность';
+            } else if (errorPercent > 10) {
+                qualityClass = 'bg-warning';
+                qualityText = 'Умеренная точность';
+            }
+            
+            resultContainer.innerHTML = `
+                <div class="alert ${qualityClass} text-white mb-4">
+                    <i class="fas fa-check-circle me-2"></i>
+                    ${qualityText} (ошибка ${errorPercent.toFixed(1)}%)
+                </div>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card result-card h-100">
+                            <div class="card-body text-center">
+                                <div class="stat-label mb-2">
+                                    <i class="fas fa-robot me-1"></i>
+                                    Прогноз модели
+                                </div>
+                                <div class="stat-value">${result.prediction.toFixed(1)}</div>
+                                <div class="text-muted">ц/га</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card result-card h-100">
+                            <div class="card-body text-center">
+                                <div class="stat-label mb-2">
+                                    <i class="fas fa-check me-1"></i>
+                                    Фактическая урожайность
+                                </div>
+                                <div class="stat-value">${result.actual.toFixed(1)}</div>
+                                <div class="text-muted">ц/га</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class="stat-label">Район</div>
+                        <div class="fw-bold">${result.district}</div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="stat-label">Год</div>
+                        <div class="fw-bold">${result.year}</div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="stat-label">Абсолютная ошибка</div>
+                        <div class="fw-bold">${result.error.toFixed(2)} ц/га</div>
+                    </div>
+                </div>
+                
+
+            `;
+        } else {
+            showError('result-container', result.message || 'Неизвестная ошибка');
+        }
+    } catch (error) {
+        showError('result-container', error.message);
+    }
+});
+</script>
+{% endblock %}

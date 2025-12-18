@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  storage-service:
+    container_name: "storage_container"
+    build: ./storage
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs
+
+  collector-service:
+    container_name: "collector_container"
+    build: ./collector
+    ports:
+      - "8001:8001"
+    environment:
+      - STORAGE_URL=http://storage-service:8000
+    depends_on:
+      - storage-service
+    volumes:
+      - ./logs:/app/logs
+
+  ml-service:
+    container_name: "ml_container"
+    build: ./ml_service
+    ports:
+      - "8002:8002"
+    environment:
+      - MODEL_PATH=models/Winter_wheat.pt
+    volumes:
+      - ./logs:/app/logs
+
+  webmaster-service:
+    container_name: "webmaster_container"
+    build: ./web_master
+    ports:
+      - "8003:8003"
+    environment:
+      - COLLECTOR_URL=http://collector-service:8001
+      - ML_URL=http://ml-service:8002
+    depends_on:
+      - storage-service
+      - collector-service
+      - ml-service
+    volumes:
+      - ./logs:/app/logs
+
+  visualization-service:
+    container_name: "vizualization_container"
+    build: ./visualization
+    ports:
+      - "8050:8050"
+    environment:
+      - WEBMASTER_URL=http://webmaster-service:8003
+    depends_on:
+      - webmaster-service
+    volumes:
+      - ./logs:/app/logs

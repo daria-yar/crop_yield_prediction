@@ -1,0 +1,24 @@
+2025-12-18 08:33:06,622 - INFO - GET /scenario4 - Пензенская область, Бековский район, 2020, history=5
+2025-12-18 08:33:06,622 - INFO - Запрос к Collector: http://collector-service:8001/regression_data, params={'region': 'Пензенская область', 'district': 'Бековский район', 'year': 2020, 'history': 5}
+2025-12-18 08:33:07,402 - INFO - Запрос к ML Service: http://ml-service:8002/regression
+2025-12-18 08:33:07,409 - INFO - OK - предсказание: 33.81, реальное: 49.40
+2025-12-18 08:43:09,328 - INFO - GET /scenario4 - Пензенская область, Бековский район, 2020, history=5
+2025-12-18 08:43:09,328 - INFO - Запрос к Collector: http://collector-service:8001/regression_data, params={'region': 'Пензенская область', 'district': 'Бековский район', 'year': 2020, 'history': 5}
+2025-12-18 08:43:10,095 - INFO - Запрос к ML Service: http://ml-service:8002/regression
+2025-12-18 08:43:10,101 - INFO - OK - предсказание: 33.81, реальное: 49.40
+2025-12-18 08:45:07,179 - INFO - GET /scenario3 - Пензенская область, Бековский район, 2020
+2025-12-18 08:45:07,179 - INFO - Запрос к Collector: http://collector-service:8001/predict_data, params={'region': 'Пензенская область', 'district': 'Бековский район', 'year': 2020}
+2025-12-18 08:45:08,016 - INFO - Запрос к ML Service: http://ml-service:8002/predict
+2025-12-18 08:45:08,101 - INFO - OK - предсказание: 42.61, реальное: 49.40
+2025-12-18 08:49:08,696 - INFO - GET /scenario3 - Пензенская область, Белинский район, 2020
+2025-12-18 08:49:08,696 - INFO - Запрос к Collector: http://collector-service:8001/predict_data, params={'region': 'Пензенская область', 'district': 'Белинский район', 'year': 2020}
+2025-12-18 08:49:09,393 - INFO - Запрос к ML Service: http://ml-service:8002/predict
+2025-12-18 08:49:09,462 - INFO - OK - предсказание: 43.46, реальное: 48.30
+2025-12-18 08:49:37,781 - INFO - GET /scenario4 - Пензенская область, Каменский район, 2020, history=5
+2025-12-18 08:49:37,781 - INFO - Запрос к Collector: http://collector-service:8001/regression_data, params={'region': 'Пензенская область', 'district': 'Каменский район', 'year': 2020, 'history': 5}
+2025-12-18 08:49:38,509 - INFO - Запрос к ML Service: http://ml-service:8002/regression
+2025-12-18 08:49:38,514 - INFO - OK - предсказание: 32.17, реальное: 50.80
+2025-12-18 08:50:03,654 - INFO - GET /scenario3 - Пензенская область, Бессоновский район, 2020
+2025-12-18 08:50:03,654 - INFO - Запрос к Collector: http://collector-service:8001/predict_data, params={'region': 'Пензенская область', 'district': 'Бессоновский район', 'year': 2020}
+2025-12-18 08:50:04,393 - INFO - Запрос к ML Service: http://ml-service:8002/predict
+2025-12-18 08:50:04,420 - INFO - OK - предсказание: 35.52, реальное: 38.80

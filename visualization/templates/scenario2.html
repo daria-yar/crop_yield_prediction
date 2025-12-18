@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}Корреляция NDVI - Прогноз урожайности{% endblock %}
+
+{% block content %}
+<div class="hero-section text-center" style="padding: 40px 0;">
+    <div class="container">
+        <h1 class="h2 fw-bold mb-2">
+            <i class="fas fa-circle-nodes me-2"></i>
+            Сценарий 2: Корреляционный анализ
+        </h1>
+        <p class="mb-0">Зависимость урожайности от максимального NDVI</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-filter me-2"></i>
+                    Параметры запроса
+                </div>
+                <div class="card-body">
+                    <form id="scenario2-form">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Регион</label>
+                            <select class="form-select" id="region" required>
+                                <option value="">Выберите регион</option>
+                                <option value="Пензенская область">Пензенская область</option>
+                                <option value="Тамбовская область">Тамбовская область</option>
+                                <option value="Тульская область">Тульская область</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Район</label>
+                            <select class="form-select" id="district" required disabled>
+                                <option value="">Сначала выберите регион</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-circle-nodes me-2"></i>
+                            Построить график
+                        </button>
+                    </form>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="small text-muted">
+                        <i class="fas fa-info-circle me-1"></i>
+                        <strong>О методе:</strong><br>
+                        Анализируется корреляция между максимальным значением NDVI 
+                        за вегетационный период и фактической урожайностью по годам.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-image me-2"></i>
+                    Результат
+                </div>
+                <div class="card-body">
+                    <div id="result-container">
+                        <div class="text-center text-muted py-5">
+                            <i class="fas fa-circle-nodes fa-3x mb-3"></i>
+                            <p>Выберите район и нажмите "Построить график"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/districts.js') }}"></script>
+<script>
+updateDistricts('region', 'district');
+
+document.getElementById('scenario2-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const resultContainer = document.getElementById('result-container');
+    showLoading('result-container');
+    
+    const data = {
+        region: document.getElementById('region').value,
+        district: document.getElementById('district').value
+    };
+    
+    try {
+        const response = await fetch('/api/scenario2', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+        
+        const result = await response.json();
+        
+        if (result.status === 'OK') {
+            const correlation = result.correlation;
+            let correlationClass = 'text-warning';
+            let correlationText = 'умеренная';
+            
+            if (Math.abs(correlation) > 0.7) {
+                correlationClass = 'text-success';
+                correlationText = 'сильная';
+            } else if (Math.abs(correlation) < 0.3) {
+                correlationClass = 'text-danger';
+                correlationText = 'слабая';
+            }
+            
+            resultContainer.innerHTML = `
+                <div class="graph-container">
+                    <img src="data:image/png;base64,${result.image}" alt="График корреляции">
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-4 text-center">
+                        <div class="stat-label">Район</div>
+                        <div class="fw-bold">${result.district}</div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="stat-label">Точек данных</div>
+                        <div class="fw-bold">${result.count} лет</div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="stat-label">Коэффициент корреляции</div>
+                        <div class="stat-value ${correlationClass}">${correlation.toFixed(3)}</div>
+                        <small class="text-muted">${correlationText} связь</small>
+                    </div>
+                </div>
+            `;
+        } else {
+            showError('result-container', result.message || 'Неизвестная ошибка');
+        }
+    } catch (error) {
+        showError('result-container', error.message);
+    }
+});
+</script>
+{% endblock %}

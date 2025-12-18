@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title %}Главная - Прогноз урожайности{% endblock %}
+
+{% block content %}
+<div class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">
+            <i class="fas fa-wheat-awn me-3"></i>
+            Прогнозирование урожайности
+        </h1>
+        <p class="lead mb-4">
+            Система анализа и прогнозирования урожайности озимой пшеницы<br>
+            на основе спутниковых и метеорологических данных
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+            <span class="badge bg-light text-dark fs-6 px-3 py-2">
+                <i class="fas fa-satellite me-1"></i> NDVI данные
+            </span>
+            <span class="badge bg-light text-dark fs-6 px-3 py-2">
+                <i class="fas fa-cloud-sun me-1"></i> Метеоданные
+            </span>
+            <span class="badge bg-light text-dark fs-6 px-3 py-2">
+                <i class="fas fa-brain me-1"></i> Нейросеть
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="text-center mb-5">Сценарии использования</h2>
+    
+    <div class="row g-4">
+        <!-- Сценарий 1 -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center p-4">
+                <div class="card-body">
+                    <div class="scenario-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h5 class="card-title">Временные ряды</h5>
+                    <p class="card-text text-muted">
+                        Визуализация динамики метеопараметров и NDVI за выбранный год
+                    </p>
+                    <a href="/scenario1" class="btn btn-primary mt-3">
+                        <i class="fas fa-arrow-right me-1"></i> Открыть
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Сценарий 2 -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center p-4">
+                <div class="card-body">
+                    <div class="scenario-icon">
+                        <i class="fas fa-circle-nodes"></i>
+                    </div>
+                    <h5 class="card-title">Корреляция</h5>
+                    <p class="card-text text-muted">
+                        Анализ зависимости урожайности от максимального NDVI
+                    </p>
+                    <a href="/scenario2" class="btn btn-primary mt-3">
+                        <i class="fas fa-arrow-right me-1"></i> Открыть
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Сценарий 3 -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center p-4">
+                <div class="card-body">
+                    <div class="scenario-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h5 class="card-title">Нейросеть</h5>
+                    <p class="card-text text-muted">
+                        Прогноз урожайности с помощью сверточной нейронной сети
+                    </p>
+                    <a href="/scenario3" class="btn btn-primary mt-3">
+                        <i class="fas fa-arrow-right me-1"></i> Открыть
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Сценарий 4 -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center p-4">
+                <div class="card-body">
+                    <div class="scenario-icon">
+                        <i class="fas fa-square-root-variable"></i>
+                    </div>
+                    <h5 class="card-title">Регрессия</h5>
+                    <p class="card-text text-muted">
+                        Прогноз урожайности методом линейной регрессии по NDVI
+                    </p>
+                    <a href="/scenario4" class="btn btn-primary mt-3">
+                        <i class="fas fa-arrow-right me-1"></i> Открыть
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-info-circle me-2"></i>
+                    О системе
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-map-marker-alt text-success me-2"></i>Регионы</h6>
+                            <p class="text-muted">Пензенская область Тамбовская область Тульская область</p>                            
+                            <h6><i class="fas fa-seedling text-success me-2"></i>Культура</h6>
+                            <p class="text-muted">Озимая пшеница</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-database text-success me-2"></i>Источники данных</h6>
+                            <p class="text-muted">NCEP</p>
+                            
+                            <h6><i class="fas fa-calendar text-success me-2"></i>Период данных</h6>
+                            <p class="text-muted">2017 - 2023 годы</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
