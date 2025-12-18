@@ -1,1 +1,0 @@
-curl -G "http://localhost:8003/scenario1/timeseries"   --data-urlencode "region=Пензенская область"   --data-urlencode "district=Белинский район"   --data-urlencode "year=2020" --data-urlencode "param=ndvi"
